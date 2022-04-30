@@ -10,7 +10,8 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nomi</th>
-                <th>Summa</th>
+                <th>Umumiy summa</th>
+                <th>Qoldiq summa</th>
                 <th>Malumoti</th>
                 <th>Telefon</th>
                 <th>Vaqt</th>
@@ -22,12 +23,14 @@
                 <tr>
                     <td scope="row">{{ $qarz->id }}</th>
                     <td>{{ $qarz->name }}</td>
+                    <td>{{ $qarz->tolav_summa }}</td>
                     <td>{{ $qarz->qarzi }}</td>
                     <td>{{ $qarz->desc }}</td>
                     <td>{{ $qarz->phone }}</td>
                     <td>{{ $qarz->vaqt }}</td>
                     <td  class="d-flex align-center justify-content-around align-center">
-                        <!-- <a href="{{ route('qarz.edit',$qarz->id) }}" class="mt-2 btn btn-primary mx-1">To'lash</a> -->
+                        <a href="{{ route('qarz.edit',$qarz->id) }}" class="mt-2 btn btn-primary mx-1">To'lash</a>
+                        <a href="{{ route('qarz.show',$qarz->id) }}" class="btn btn-success mt-2 mx-1"><i class="bi bi-bag-fill"></i></a>
                         <form action="{{ route('qarz.destroy',$qarz->id) }}" method="post">
                             @csrf
                             @method('DELETE')

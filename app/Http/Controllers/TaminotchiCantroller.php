@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\taminotchi;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\taminotProduct;
 
 class TaminotchiCantroller extends Controller
 {
@@ -57,7 +58,7 @@ class TaminotchiCantroller extends Controller
      */
     public function show($id)
     {
-        $prod = Product::all()->where('taminotchi',$id);
+        $prod = taminotProduct::all()->where('taminotchi',$id);
         return view('taminotchi.show',compact('prod'));
     }
 

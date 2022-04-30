@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQarzsTable extends Migration
+class CreateQarzhistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateQarzsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qarzs', function (Blueprint $table) {
+        Schema::create('qarzhistories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->string('name');
-            $table->string('tolav_summa');
-            $table->integer('qarzi');
-            $table->string('desc');
-            $table->string('phone');
-            $table->date('vaqt');
+            $table->integer('qarz_id');
+            $table->string('tolav');
         });
     }
 
@@ -33,6 +29,6 @@ class CreateQarzsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qarzs');
+        Schema::dropIfExists('qarzhistories');
     }
 }

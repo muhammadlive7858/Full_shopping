@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ShaxsiyQarz;
 use Illuminate\Http\Request;
 use App\Models\taminotchi;
+use App\Models\taminotProduct;
 
 class ProductController extends Controller
 {
@@ -64,6 +66,24 @@ class ProductController extends Controller
             $baza_name = "images/uploaded-image/".$new_name;
             //dd($baza_name);
             if($move){
+                $summa = $request->price * $request->count;
+                $store = ShaxsiyQarz::create([
+                    'taminotchi_id'=>$request->taminotchi,
+                    'desc'=>$request->name,
+                    'summa'=>$summa,
+                    'tolav'=>$summa
+                ]);
+                $store = taminotProduct::create([
+                    'name'=>$request->name,
+                    'category_id'=>$request->category_id,
+                    'desc'=>$request->desc,
+                    'image'=>$baza_name,
+                    'producttime'=>$request->producttime,
+                    'taminotchi'=>$request->taminotchi,
+                    'price'=>$request->price,
+                    'shop_price'=>$request->shop_price,
+                    'count'=>$request->count
+                ]);
                 $store = Product::create([
                     'name'=>$request->name,
                     'category_id'=>$request->category_id,

@@ -84,6 +84,7 @@ Route::get('hodimedit/{id}',[Hodims::class,'edit'])->name('hodim.edit');
 Route::delete('hodimdelete/{id}',[Hodims::class,'destroy'])->name('hodim.destroy');
 Route::get('hodimshow',[Hodims::class,'show'])->name('hodim.show');
 Route::post('hodimsavdo',[Hodims::class,'savdo'])->name('hodim.savdo');
+Route::post('savdoDelete',[Hodims::class,'savdoDelete'])->name('hodimsavdo.delte');
 // hodim savdo
-Route::POST('/savdodelete',[Hodims::class,'savdodelete'])->name('hodimsavdo.delete');
+// Route::POST('/savdodelete',[Hodims::class,'savdodelete'])->name('hodimsavdo.delete');
 Route::get('showsavdo',[Hodims::class,'showsavdo'])->name('show.savdo');

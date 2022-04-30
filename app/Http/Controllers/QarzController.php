@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Qarz;
+use App\Models\qarzhistory;
 use Illuminate\Http\Request;
 
 class QarzController extends Controller
@@ -36,7 +37,14 @@ class QarzController extends Controller
      */
     public function store(Request $request)
     {
-        $create = Qarz::create($request->input());
+        $create = Qarz::create([
+            'name'=>$request->name,
+            'tolav_summa'=>$request->qarzi,
+            'qarzi'=>$request->qarzi,
+            'desc'=>$request->desc,
+            'phone'=>$request->phone,
+            'vaqt'=>$request->vaqt
+        ]);
         if($create){
             return redirect()->route('qarz.index');
         }else{
@@ -50,9 +58,10 @@ class QarzController extends Controller
      * @param  \App\Models\Qarz  $qarz
      * @return \Illuminate\Http\Response
      */
-    public function show(Qarz $qarz)
+    public function show($id)
     {
-        //
+        $qarz = qarzhistory::all()->where('qarz_id',$id);
+        return view('qarz.show',compact('qarz'));
     }
 
     /**
@@ -82,6 +91,10 @@ class QarzController extends Controller
         $qar = $qarz->qarzi - $request->qarzi;
         $tolav = $qarz->update([
             'qarzi'=>$qar
+        ]);
+        qarzhistory::create([
+            'qarz_id'=>$id,
+            'tolav'=>$request->qarzi
         ]);
         if($tolav){
             return redirect()->route('qarz.index');

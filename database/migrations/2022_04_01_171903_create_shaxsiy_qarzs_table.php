@@ -20,6 +20,7 @@ class CreateShaxsiyQarzsTable extends Migration
             $table->integer('taminotchi_id');
             $table->string('desc')->nullable();
             $table->integer('summa');
+            $table->string('tolav');
         });
     }
 

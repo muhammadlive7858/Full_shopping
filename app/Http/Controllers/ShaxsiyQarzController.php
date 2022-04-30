@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ShaxsiyQarz;
+use App\Models\shaxsiyqarzhistory;
 use App\Models\taminotchi;
 use Illuminate\Http\Request;
 
@@ -38,8 +39,14 @@ class ShaxsiyQarzController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $store = ShaxsiyQarz::create($request->input());
+    {   
+        
+        $store = ShaxsiyQarz::create([
+            'taminotchi_id'=>$request->taminotchi_id,
+            'desc'=>$request->desc,
+            'summa'=>$request->summa,
+            'tolav'=>$request->summa
+        ]);
         if($store){
             return redirect()->route('shaxsiyqarz.index');
         }
@@ -51,9 +58,11 @@ class ShaxsiyQarzController extends Controller
      * @param  \App\Models\ShaxsiyQarz  $shaxsiyQarz
      * @return \Illuminate\Http\Response
      */
-    public function show(ShaxsiyQarz $shaxsiyQarz)
+    public function show( $id)
     {
-        //
+        $show = shaxsiyqarzhistory::all()->where('qarz_id',$id);
+
+        return view('shaxsiyqarz.show',compact('show'));
     }
 
     /**
@@ -80,7 +89,11 @@ class ShaxsiyQarzController extends Controller
         $qarz = ShaxsiyQarz::find($id);
         $tolav = $qarz->summa - $request->tolav;
         $update = $qarz->update([
-            'summa'=>$tolav,
+            'summa'=>$tolav
+        ]);
+        shaxsiyqarzhistory::create([
+            'qarz_id'=>$id,
+            'tolav'=>$request->tolav
         ]);
         if($update){
             return redirect()->route('shaxsiyqarz.index');

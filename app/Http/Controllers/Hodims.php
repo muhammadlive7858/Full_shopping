@@ -46,8 +46,12 @@ class Hodims extends Controller
         return view('hodim.show',compact('hodim','savdo'));
     }
     public function savdo(Request $request){
-        Hodimsavdo::create($request->input());
-        return redirect()->route('show.savdo');
+        $savdo = Hodimsavdo::create($request->input());
+        if($savdo){
+            return redirect()->route('show.savdo');
+        }else{
+            return redirect()->back();
+        }
     }
     public function savdodelete($id){
         $delete = Hodimsavdo::find($id);
