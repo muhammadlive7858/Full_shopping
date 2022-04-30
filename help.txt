@@ -1,0 +1,338 @@
+vs git token vscode://vscode.github-authentication/did-authenticate?windowid=1&code=c3aea36dca37fdf99d8b&state=72445b72-fa89-4ddb-8f91-609070f122f0
+
+
+
+
+    <li>
+        <a href="components-accordion.html">
+        <i class="bi bi-circle"></i><span>Accordion</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-badges.html">
+        <i class="bi bi-circle"></i><span>Badges</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-breadcrumbs.html">
+        <i class="bi bi-circle"></i><span>Breadcrumbs</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-buttons.html">
+        <i class="bi bi-circle"></i><span>Buttons</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-cards.html">
+        <i class="bi bi-circle"></i><span>Cards</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-carousel.html">
+        <i class="bi bi-circle"></i><span>Carousel</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-list-group.html">
+        <i class="bi bi-circle"></i><span>List group</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-modal.html">
+        <i class="bi bi-circle"></i><span>Modal</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-tabs.html">
+        <i class="bi bi-circle"></i><span>Tabs</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-pagination.html">
+        <i class="bi bi-circle"></i><span>Pagination</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-progress.html">
+        <i class="bi bi-circle"></i><span>Progress</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-spinners.html">
+        <i class="bi bi-circle"></i><span>Spinners</span>
+        </a>
+    </li>
+    <li>
+        <a href="components-tooltips.html">
+        <i class="bi bi-circle"></i><span>Tooltips</span>
+        </a>
+    </li>
+
+
+
+
+
+
+
+
+
+
+    @forelse($product as $prod)
+    <table class="table table-bordered w-100">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nomi</th>
+                    <th scope="col">Kategoriya</th>
+                    <th>Rasm</th>
+                    <th>Narxi</th>
+                    <th scope="col">ID raqami</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+                <tr>
+                    <td scope="row">{{ $prod->id }}</th>
+                    <td>{{ $prod->name }}</td>
+                    <td>{{ $prod->category_id }}</td>
+                    <td>{{ $prod->image }}</td>
+                    <td>{{ $prod->price }}</td>
+                    <td>{{ $prod->producttime }}</td>
+                </tr>
+                
+            </tbody>
+    </table>
+    @empty
+    <h1>Hozircha Tavarlar mavjud emas</h1>
+    @endforelse
+
+
+
+
+
+
+
+
+
+
+
+
+@foreach($cate as $cat)
+    <table class="table table-bordered w-100">
+        <thead>
+            <tr>
+                <th>$cat->name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach($product as $prod)
+                    @if($prod->category_id === $cat->id)
+                        <td>$prod->name</td>
+                    @endif
+                @endforeach
+            </tr>
+        </tbody>
+    </table>
+
+@endforeach
+
+<form action="{{ route('shop-show-cate') }}" method="" class="form-control d-flex mb-3 p-2">
+    @csrf
+    @method('get')
+    <select class="form-select p-2" aria-label="Default select example" name="cateid">
+        <option selected>Tavar bo'limini tanlang</option>
+        @foreach($cate as $cat)
+            <option name="" value="{{ $cat->id }}">{{ $cat->name }}</option>
+        @endforeach
+    </select>
+    <button class="btn btn-primary mx-2">Tanlandi</button>
+</form>
+
+
+
+
+             foreach($pro as $pro){
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar1 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda1 = ($pro->shop_price - $pro->price) * $counts;
+                    $price1 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar2 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda2 = ($pro->shop_price - $pro->price) * $counts;
+                    $price2 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar3 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda3 = ($pro->shop_price - $pro->price) * $counts;
+                    $price3 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar4 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda4 = ($pro->shop_price - $pro->price) * $counts;
+                    $price4 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar5 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda5 = ($pro->shop_price - $pro->price) * $counts;
+                    $price5 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar6 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda6 = ($pro->shop_price - $pro->price) * $counts;
+                    $price6 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar7 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda7 = ($pro->shop_price - $pro->price) * $counts;
+                    $price7 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar8 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda8 = ($pro->shop_price - $pro->price) * $counts;
+                    $price8 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar9 = `$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda9 = ($pro->shop_price - $pro->price) * $counts;
+                    $price9 = $pro->shop_price;
+                    $i++;
+                    $name = $pro['name'];
+                    $counts = $request->sotish_soni[$i];
+                    $tavar10 =`$name nomli tavardan $request->sotish_soni[$i] `;
+                    $tavar_foyda10 = ($pro->shop_price - $pro->price) *$counts;
+                    $price10 = $pro->shop_price;
+                    
+                }
+                if(!empty($tavar1)){
+                    if(!empty($tavar2)){
+                        if(!empty($tavar3)){
+                            if(!empty($tavar4)){
+                                if(!empty($tavar5)){
+                                    if(!empty($tavar6)){
+                                        if(!empty($tavar7)){
+                                            if(!empty($tavar8)){
+                                                if(!empty($tavar9)){
+                                                    if(!empty($tavar10)){
+                                                        $price = $price1 + $price2 + $price3 + $price4 + $price5 + $price6 + $price7 + $price8 + $price9 + $price10;
+                                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5 + $tavar_foyda6 + $tavar_foyda7 + $tavar_foyda8 + $tavar_foyda9 + $tavar_foyda10;
+                                                        $create = Sotuv_Royxati::create([
+                                                            'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5,$tavar6,$tavar7,$tavar8,$tavar9,$tavar10`,
+                                                            'foyda'=>`$foyda`,
+                                                            'sotilgan_summa'=>`$price`,
+                                                            'skidka'=> $request->skidka,
+                                                            'tolav_turi'=>$request->tolav_turi
+                                                        ]);
+                                                    }else{
+                                                        $price = $price1 + $price2 + $price3 + $price4 + $price5 + $price6 + $price7 + $price8 + $price9;
+                                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5 + $tavar_foyda6 + $tavar_foyda7 + $tavar_foyda8 + $tavar_foyda9;
+                                                        $create = Sotuv_Royxati::create([
+                                                            'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5,$tavar6,$tavar7,$tavar8,$tavar9`,
+                                                            'foyda'=>`$foyda`,
+                                                            'sotilgan_summa'=>`$price`,
+                                                            'skidka'=> $request->skidka,
+                                                            'tolav_turi'=>$request->tolav_turi
+                                                        ]);
+                                                    }
+                                                }else{
+                                                    $price = $price1 + $price2 + $price3 + $price4 + $price5 + $price6 + $price7 + $price8;
+                                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5 + $tavar_foyda6 + $tavar_foyda7 + $tavar_foyda8;
+                                                        $create = Sotuv_Royxati::create([
+                                                            'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5,$tavar6,$tavar7,$tavar8`,
+                                                            'foyda'=>`$foyda`,
+                                                            'sotilgan_summa'=>`$price`,
+                                                            'skidka'=> $request->skidka,
+                                                            'tolav_turi'=>$request->tolav_turi
+                                                        ]);
+                                                }
+                                            }else{
+                                                $price = $price1 + $price2 + $price3 + $price4 + $price5 + $price6 + $price7;
+                                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5 + $tavar_foyda6 + $tavar_foyda7;
+                                                        $create = Sotuv_Royxati::create([
+                                                            'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5,$tavar6,$tavar7`,
+                                                            'foyda'=>`$foyda`,
+                                                            'sotilgan_summa'=>`$price`,
+                                                            'skidka'=> $request->skidka,
+                                                            'tolav_turi'=>$request->tolav_turi
+                                                        ]);
+                                            }
+                                        }else{
+                                            $price = $price1 + $price2 + $price3 + $price4 + $price5 + $price6;
+                                                $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5 + $tavar_foyda6;
+                                                $create = Sotuv_Royxati::create([
+                                                    'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5,$tavar6`,
+                                                    'foyda'=>`$foyda`,
+                                                    'sotilgan_summa'=>`$price`,
+                                                    'skidka'=> $request->skidka,
+                                                    'tolav_turi'=>$request->tolav_turi
+                                                ]);
+                                        }
+                                    }else{
+                                        $price = $price1 + $price2 + $price3 + $price4 + $price5;
+                                            $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4 + $tavar_foyda5;
+                                            $create = Sotuv_Royxati::create([
+                                                'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4,$tavar5`,
+                                                'foyda'=>`$foyda`,
+                                                'sotilgan_summa'=>`$price`,
+                                                'skidka'=> $request->skidka,
+                                                'tolav_turi'=>$request->tolav_turi
+                                            ]);
+                                    }
+                                }else{
+                                    $price = $price1 + $price2 + $price3 + $price4;
+                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3 + $tavar_foyda4;
+                                        $create = Sotuv_Royxati::create([
+                                            'tavar'=>`$tavar1,$tavar2,$tavar3,$tavar4`,
+                                            'foyda'=>`$foyda`,
+                                            'sotilgan_summa'=>`$price`,
+                                            'skidka'=> $request->skidka,
+                                            'tolav_turi'=>$request->tolav_turi
+                                        ]);
+                                }
+                            }else{
+                                $price = $price1 + $price2 + $price3;
+                                        $foyda = $tavar_foyda1 + $tavar_foyda2 + $tavar_foyda3;
+                                        $create = Sotuv_Royxati::create([
+                                            'tavar'=>`$tavar1,$tavar2,$tavar3`,
+                                            'foyda'=>`$foyda`,
+                                            'sotilgan_summa'=>`$price`,
+                                            'skidka'=> $request->skidka,
+                                            'tolav_turi'=>$request->tolav_turi
+                                        ]);
+                            }
+                        }else{
+                            $price = $price1 + $price2;
+                                $foyda = $tavar_foyda1 + $tavar_foyda2;
+                                $create = Sotuv_Royxati::create([
+                                    'tavar'=>`$tavar1,$tavar2`,
+                                    'foyda'=>`$foyda`,
+                                    'sotilgan_summa'=>`$price`,
+                                    'skidka'=> $request->skidka,
+                                    'tolav_turi'=>$request->tolav_turi
+                                ]);
+                        }
+                    }else{
+                        $price = $price1;
+                            $foyda = $tavar_foyda1;
+                            $create = Sotuv_Royxati::create([
+                                'tavar'=>`$tavar1`,
+                                'foyda'=>`$foyda`,
+                                'sotilgan_summa'=>`$price`,
+                                'skidka'=> $request->skidka,
+                                'tolav_turi'=>$request->tolav_turi
+                            ]);
+                    }
+                }
+            }
+        }
